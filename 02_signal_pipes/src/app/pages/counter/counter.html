@@ -1,0 +1,14 @@
+<div class="text-center">
+  <h2 class="text-4xl m-4">{{ count() }}</h2>
+  <div class="text-white">
+      <button (click)="updateValue(-10)" class="bg-rose-700 px-3 py-1 rounded-xl mx-2 hover:cursor-pointer hover:bg-rose-900">-10</button>
+      
+      <button (click)="decrement()" class="bg-pink-700 px-3 py-1 rounded-xl mx-2 hover:cursor-pointer hover:bg-pink-900">-1</button>
+      
+      <button (click)="increment()" class="bg-teal-700 px-3 py-1 rounded-xl mx-2 hover:cursor-pointer hover:bg-teal-900">+1</button>
+
+      <button (click)="updateValue(10)" class="bg-emerald-700 px-3 py-1 rounded-xl mx-2 hover:cursor-pointer hover:bg-emerald-900">+10</button>
+
+    <button (click)="reset()" class="bg-neutral-700 px-3 py-1 rounded-xl mx-2 hover:cursor-pointer hover:bg-neutral-900">Скинути</button>
+  </div>
+</div>
