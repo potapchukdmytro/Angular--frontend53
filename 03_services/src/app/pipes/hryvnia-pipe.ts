@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'hryvnia',
 })
 export class HryvniaPipe implements PipeTransform {
-  transform(value: string | number, format: string = "text"): string {
+  transform(value: string | number | null, format: string = "text"): string {
     const symbol = "₴";
     // symbol || text
 

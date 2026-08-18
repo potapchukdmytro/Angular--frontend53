@@ -10,5 +10,5 @@ npx ng g c folder/name
 ## Згенерувати сервіс
 npx ng g s services/name
 
-## Згенерувати pipi
+## Згенерувати pipe
 npx ng g pipe pipes/name

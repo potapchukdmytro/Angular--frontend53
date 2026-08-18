@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Count } from '../../services/count';
 
 @Component({
   selector: 'app-counter',
@@ -7,29 +8,5 @@ import { Component, signal } from '@angular/core';
   styleUrl: './counter.css',
 })
 export class Counter {
-  count = signal(0);
-
-  // +1
-  increment() {
-    this.count.update(prev => prev + 1);
-    console.log(this.count());
-  }
-
-  // -1
-  decrement() {
-    if(this.count() > 0) {
-      this.count.update(prev => prev - 1);
-    }
-  }
-
-  updateValue(offset: number) {
-    const newValue = this.count() + offset;
-    if(newValue >= 0) {
-      this.count.set(newValue);
-    }
-  }
-
-  reset() {
-    this.count.set(0);
-  }
+  counterService = inject(Count);
 }

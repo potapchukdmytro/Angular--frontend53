@@ -13,4 +13,11 @@
     
     <p>{{ "599.99" | hryvnia:'symbol' }}</p>
     <p>{{ 29 | hryvnia }}</p>
+
+    <h2 class="font-bold">Тестування currency сервісу</h2>
+    <p>$49.99</p>
+    <p>{{ currency.UsdToUah(49.99) | number:'1.0-0' | hryvnia }}</p>
+
+    <p>{{ 25000 | hryvnia}}</p>
+    <p>{{ currency.UahToEur(25000) | number:'1.0-2' | currency:'EUR'}}</p>
 </div>
