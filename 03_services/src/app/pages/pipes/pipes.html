@@ -1,0 +1,16 @@
+<div class="text-center">
+    <p>{{ today | date:'dd.MM.yyyy HH:mm:ss' }}</p>
+    <p>{{ title | uppercase }}</p>
+    <p>{{ title | lowercase }}</p>
+    <p>{{ title | titlecase }}</p>
+    <p>{{ title | slice:0:7 }}</p>
+    <p>{{ number | number:'5.5-5' }}</p>
+    <p>{{ number | number:'1.0-2' }}</p>
+    <p>{{ 'Angular' | uppercase }}</p>
+    <p>{{ 0.75 | percent }}</p>
+    <p>{{ 0.255 | percent:'1.0-2' }}</p>
+    <p>{{ 99 | currency:'USD':'symbol':'1.2-2' }}</p>
+    
+    <p>{{ "599.99" | hryvnia:'symbol' }}</p>
+    <p>{{ 29 | hryvnia }}</p>
+</div>
