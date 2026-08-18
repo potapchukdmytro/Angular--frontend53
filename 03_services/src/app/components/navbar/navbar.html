@@ -19,10 +19,21 @@
     <div>
       <a routerLink="/counter">Лічильник</a>
     </div>
+    <div>
+      <a routerLink="/stopwatch">Секундомір</a>
+    </div>
   </div>
 
   <!-- right -->
-  <div class="flex-1 text-end">
-    <span>{{ counter.count() }}</span>
+  <div class="flex-1 flex justify-around items-center">
+    <span>Лічильник: {{ counter.count() }}</span>
+    <div class="flex flex-col">
+      <span class="text-xs">
+        USD: {{ currency.getUsd() | number:'1.2-2' }}
+      </span>
+      <span class="text-xs">
+        EUR: {{ currency.getEur() | number:'1.2-2' }}
+      </span>
+    </div>
   </div>
 </div>

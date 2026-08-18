@@ -5,6 +5,14 @@ export class Currency {
     private USD = 44.80;
     private EUR = 51.86;
 
+    public getUsd() {
+        return this.USD;
+    }
+
+    public getEur() {
+        return this.EUR;
+    }
+
     public UsdToUah(value: number) {
         return value * this.USD;
     }
