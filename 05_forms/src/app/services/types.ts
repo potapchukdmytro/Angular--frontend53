@@ -17,6 +17,7 @@ export interface Book {
     description: string | null;
     number_of_pages: number;
     publish_date: number;
+    authorId: number;
 }
 
 export interface ListPayload<T> {

@@ -9,7 +9,7 @@ export class BooksService {
 
     // Get books
     getBooks() {
-        return this.httpClient.get<ApiResponse<ListPayload<Book>>>(this.apiUrl);
+        return this.httpClient.get<ApiResponse<ListPayload<Book>>>(this.apiUrl + '?page_size=200');
     }
 
     // POST book
