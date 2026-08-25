@@ -6,6 +6,7 @@ import { Pipes } from './pages/pipes/pipes';
 import { Counter } from './pages/counter/counter';
 import { Timer } from './pages/timer/timer';
 import { BookList } from './pages/books/book-list/book-list';
+import { BookCreate } from './pages/books/book-create/book-create';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -13,6 +14,7 @@ export const routes: Routes = [
     { path: 'band', component: MusicBand },
     { path: 'pipes', component: Pipes },
     { path: 'counter', component: Counter },
-    { path: "stopwatch", component: Timer },
-    { path: "books", component: BookList }
+    { path: 'stopwatch', component: Timer },
+    { path: 'books', component: BookList },
+    { path: 'create-book', component: BookCreate }
 ];

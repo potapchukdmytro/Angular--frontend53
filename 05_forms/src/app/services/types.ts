@@ -14,9 +14,12 @@ export interface Book {
     rating: number;
     price: number;
     author: Author;
+    description: string | null;
+    number_of_pages: number;
+    publish_date: number;
 }
 
-export interface ResponsePayload<T> {
+export interface ListPayload<T> {
     items: T[];
     page: number;
     page_size: number;
@@ -27,5 +30,5 @@ export interface ResponsePayload<T> {
 export interface ApiResponse<T> {
     message: string;
     success: boolean;
-    payload: ResponsePayload<T>;
+    payload: T;
 }

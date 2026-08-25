@@ -1,6 +1,6 @@
 import { Service, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiResponse, Book } from '../types';
+import { ApiResponse, Book, ListPayload } from '../types';
 
 @Service()
 export class BooksService {
@@ -9,6 +9,11 @@ export class BooksService {
 
     // Get books
     getBooks() {
-        return this.httpClient.get<ApiResponse<Book>>(this.apiUrl);
+        return this.httpClient.get<ApiResponse<ListPayload<Book>>>(this.apiUrl);
+    }
+
+    // POST book
+    createBook(data: Book) {
+        return this.httpClient.post<ApiResponse<Book>>(this.apiUrl, data);
     }
 }
