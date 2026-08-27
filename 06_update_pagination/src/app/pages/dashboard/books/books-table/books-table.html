@@ -1,0 +1,33 @@
+<div>
+  <table class="table-fixed border-collapse" style="width: 80%;">
+    <thead>
+      <tr class="border-b border-b-gray-400">
+        <th class="text-center" style="width: 10%;">Id</th>
+        <th class="text-center" style="width: 10%;">Фото</th>
+        <th class="text-center" style="width: 40%;">Назва</th>
+        <th class="text-center" style="width: 10%;">Рейтинг</th>
+        <th class="text-center" style="width: 10%;">Ціна</th>
+        <th class="text-center" style="width: 20%;">Автор</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (book of books(); track book.id) {
+        <tr class="border-b border-b-gray-400">
+          <td class="text-center">{{ book.id }}</td>
+          <td class="flex justify-center py-1">
+            <img
+                (error)="imageErrorHandle($event)"
+              style="height: 75px; height: 75px; object-fit: contain"
+              alt="{{ book.title }}"
+              src="{{ book.image ? book.image : `/images/bookDefault.png` }}"
+            />
+          </td>
+          <td class="text-center">{{ book.title }}</td>
+          <td class="text-center">{{ book.rating }}</td>
+          <td class="text-center">{{ book.price }}</td>
+          <td class="text-center">{{ book.author ? book.author.name : '' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

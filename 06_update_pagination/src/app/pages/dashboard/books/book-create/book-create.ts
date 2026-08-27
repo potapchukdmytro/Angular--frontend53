@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Author } from '../../../services/types';
-import { BooksService } from '../../../services/books/books-service';
-import { AuthorsService } from '../../../services/authors/authors-service';
+import { Author } from '../../../../services/types';
+import { BooksService } from '../../../../services/books/books-service';
+import { AuthorsService } from '../../../../services/authors/authors-service';
 import { Router } from '@angular/router';
 
 @Component({
