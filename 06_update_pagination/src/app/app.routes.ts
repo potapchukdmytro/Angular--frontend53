@@ -25,7 +25,7 @@ export const routes: Routes = [
         children: [
             { path: "books", component: BooksTable },
             { path: "books/create", component: BookCreate },
-            { path: "books/update", component: BookUpdate }
+            { path: "books/update/:id", component: BookUpdate }
         ]
     }
 ];

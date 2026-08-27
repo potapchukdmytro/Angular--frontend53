@@ -40,7 +40,7 @@ export class BookCreate implements OnInit {
   handleSubmit() {
     if(this.createForm.valid) {
       this.booksService.createBook(this.createForm.value).subscribe({
-        next: () => { this.router.navigate(['/books']) },
+        next: () => { this.router.navigate(['/dashboard/books']) },
         error: (error) => { console.log(error) }
       });
     } else {
