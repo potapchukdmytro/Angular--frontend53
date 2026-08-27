@@ -1,0 +1,31 @@
+<div>
+  @if (books().length > 0) {
+    <!-- books -->
+    <div class="grid grid-cols-5 px-48 py-4 -space-x-px -space-y-px">
+      @for (book of books(); track book.id) {
+        <!-- card -->
+        <div class="border py-6 px-4 border-gray-300">
+          <div class="flex justify-center h-96">
+            <img
+              (error)="imageErrorHandle($event)"
+              class="object-contain"
+              [alt]="book.title"
+              width="250"
+              [src]="book.image ? book.image : '/images/bookDefault.png'"
+            />
+          </div>
+          <div class="text-2xl px-2 mt-2 font-medium">{{ book.title }}</div>
+          <div class="text-sm px-2 text-gray-500">
+            {{ book.author ? book.author.name : 'Невідомий' }}
+          </div>
+          <div class="text-pink-500 px-2 text-3xl font-semibold mt-3">
+            {{ book.price | hryvnia }}
+          </div>
+        </div>
+        <!--  -->
+      }
+    </div>
+  } @else {
+    <h2 class="text-2xl text-center">Книги завантажуються...</h2>
+  }
+</div>
