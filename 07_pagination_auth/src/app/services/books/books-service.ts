@@ -8,8 +8,8 @@ export class BooksService {
     private apiUrl = `https://frontend53.somee.com/api/books`;
 
     // GET books
-    getBooks() {
-        return this.httpClient.get<ApiResponse<ListPayload<Book>>>(this.apiUrl + '?page_size=200');
+    getBooks(page: number | string = 1) {
+        return this.httpClient.get<ApiResponse<ListPayload<Book>>>(`${this.apiUrl}?page_size=20&page=${page}`);
     }
 
     // GET book by id
