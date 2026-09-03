@@ -1,9 +1,9 @@
 <div class="flex p-5 bg-slate-700 text-white">
-    <!-- logo -->
+  <!-- logo -->
   <div class="flex-1"></div>
 
   <!-- navigation -->
-  <div class="flex-2 flex justify-evenly items-center">
+  <div class="flex-3 flex justify-evenly items-center">
     <div>
       <a routerLink="/">Головна</a>
     </div>
@@ -21,16 +21,15 @@
     </div>
   </div>
 
-  <!-- right -->
-  <div class="flex-1 flex justify-around items-center">
-    <span>Лічильник: {{ counter.count() }}</span>
-    <div class="flex flex-col">
-      <span class="text-xs">
-        USD: {{ currency.getUsd() | number:'1.2-2' }}
-      </span>
-      <span class="text-xs">
-        EUR: {{ currency.getEur() | number:'1.2-2' }}
-      </span>
+  <div class="flex-2 flex justify-end">
+    <div class="flex-1"></div>
+    <div class="flex-1 flex justify-evenly">
+      <div>
+        <a routerLink="/login">Увійти</a>
+      </div>
+      <div>
+        <a routerLink="/register">Зареєструватися</a>
+      </div>
     </div>
   </div>
 </div>

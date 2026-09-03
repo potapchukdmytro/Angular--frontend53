@@ -10,6 +10,7 @@ import { BookCreate } from './pages/dashboard/books/book-create/book-create';
 import { Dashboard } from './pages/dashboard/dashboard/dashboard';
 import { BooksTable } from './pages/dashboard/books/books-table/books-table';
 import { BookUpdate } from './pages/dashboard/books/book-update/book-update';
+import { Login } from './pages/auth/login/login';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path: 'counter', component: Counter },
     { path: 'stopwatch', component: Timer },
     { path: 'books', component: BookList },
+    { path: 'login', component: Login },
     { 
         path: 'dashboard',
         component: Dashboard,

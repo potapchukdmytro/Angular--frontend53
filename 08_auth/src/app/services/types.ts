@@ -20,6 +20,11 @@ export interface Book {
     authorId: number;
 }
 
+export interface Login {
+    email: string;
+    password: string;
+}
+
 export interface ListPayload<T> {
     items: T[];
     page: number;
