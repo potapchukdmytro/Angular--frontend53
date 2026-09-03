@@ -11,6 +11,9 @@ import { Dashboard } from './pages/dashboard/dashboard/dashboard';
 import { BooksTable } from './pages/dashboard/books/books-table/books-table';
 import { BookUpdate } from './pages/dashboard/books/book-update/book-update';
 import { Login } from './pages/auth/login/login';
+import { Profile } from './pages/user/profile/profile';
+import { authGuard } from './core/guards/auth-guard';
+import { adminRoleGuard } from './core/guards/admin-role-guard';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -21,9 +24,11 @@ export const routes: Routes = [
     { path: 'stopwatch', component: Timer },
     { path: 'books', component: BookList },
     { path: 'login', component: Login },
+    { path: 'profile', component: Profile, canActivate: [authGuard] },
     { 
         path: 'dashboard',
         component: Dashboard,
+        canActivate: [adminRoleGuard],
         children: [
             { path: "books", component: BooksTable },
             { path: "books/create", component: BookCreate },

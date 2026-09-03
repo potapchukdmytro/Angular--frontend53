@@ -23,13 +23,22 @@
 
   <div class="flex-2 flex justify-end">
     <div class="flex-1"></div>
-    <div class="flex-1 flex justify-evenly">
-      <div>
-        <a routerLink="/login">Увійти</a>
-      </div>
-      <div>
-        <a routerLink="/register">Зареєструватися</a>
-      </div>
+    <div class="flex-1 flex justify-end">
+      @if (authService.isAuth()) {
+        <div class="mx-2">
+          <a routerLink="/profile">Профіль</a>
+        </div>
+        <div class="mx-2">
+          <a class="hover:cursor-pointer" (click)="authService.logout()">Вийти</a>
+        </div>
+      } @else {
+        <div class="mx-2">
+          <a routerLink="/login">Увійти</a>
+        </div>
+        <div class="mx-2">
+          <a routerLink="/register">Зареєструватися</a>
+        </div>
+      }
     </div>
   </div>
 </div>
