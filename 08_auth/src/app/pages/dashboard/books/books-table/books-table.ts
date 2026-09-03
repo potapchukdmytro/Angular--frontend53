@@ -56,74 +56,30 @@ export class BooksTable implements OnInit {
   }
 
   getPages() {
-    if (this.payload()) {
+    if(!this.payload()) {
+      return [1];
+    }
       const total = this.payload()!.total_pages;
       const page = this.payload()!.page;
-      const result = [];
 
-      for (let p = 1; p <= total; p++) {
-        result.push(p);
+      if(total <= 7) {
+        const result = [];
+        for (let i = 1; i <= total; i++) {
+          result.push(i);
+        }
+        return result;
       }
-      return result;
-    }
 
-    // 1   -> 1 2 3 4 5 6 ... last
-    // 5   -> 1 .. 3 4 5 6 7 ... last
+      if(page <= 4) {
+        return [1, 2, 3, 4, 5, 6, -1, total]
+      }
 
-    return [1];
+      if(page >= total - 3) {
+        return [1, -1, total - 5, total - 4, total - 3, total - 2, total - 1, total]
+      }
+
+      return [1, -1, page -2 , page - 1, page, page + 1, page + 2, -1, total]
   }
-
-  // getPages() {
-  //   if (this.payload()) {
-  //     const total = this.payload()!.total_pages;
-  //     const page = this.payload()!.page;
-  //     let result = [1];
-  //     const left = [];
-  //     const right = [];
-
-  //     for(let i = page; i >= page - 3; i--)
-  //     {
-  //       if(i == 1 || i == total) {
-  //         continue;
-  //       }
-  //       if(i == 1) {
-  //         break;
-  //       }
-  //       else if(i == page - 3 && i > 1) {
-  //         left.push(-1);
-  //       } else {
-  //         left.push(i);
-  //       }
-  //     }
-
-  //     result = result.concat(left.reverse());
-
-  //     for(let i = page + 1; i < page + 3; i++)
-  //     {
-  //       if(i == 1 || i == total) {
-  //         continue;
-  //       }
-  //       if(i == total) {
-  //         break;
-  //       }
-  //       else if(i == page + 3 && i < total) {
-  //         right.push(-1);
-  //       } else {
-  //         right.push(i);
-  //       }
-  //     }
-
-  //     result = result.concat(right);
-
-  //     result.push(total)
-  //     return result;
-  //   }
-
-  //   // 1   -> 1 2 3 4 5 6 ... last
-  //   // 5   -> 1 .. 3 4 5 6 7 ... last
-
-  //   return [1];
-  // }
 
   getRange() {
     if (!this.payload()) {

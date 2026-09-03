@@ -121,7 +121,10 @@
             </button>
             <!-- Current: "z-10 text-white focus-visible:outline-2 focus-visible:outline-offset-2 bg-indigo-500 focus-visible:outline-indigo-500", Default: "inset-ring focus:outline-offset-0 text-black inset-ring-gray-700 hover:bg-white/5" -->
             @for (p of getPages(); track p) {
-              @if (p == payload()!.page) {
+              @if(p == -1) {
+                <span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-black inset-ring inset-ring-gray-700 focus:outline-offset-0">...</span>
+              }
+              @else if (p == payload()!.page) {
                 <button
                   (click)="pageClick(p)"
                   aria-current="page"
