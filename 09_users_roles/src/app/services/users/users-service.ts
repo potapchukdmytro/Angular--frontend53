@@ -10,4 +10,8 @@ export class UsersService {
     getUsers(page: number | string = 1) {
         return this.httpClient.get<ApiResponse<ListPayload<User>>>(`${this.apiUrl}?page=${page}`);
     }
+
+    confirmEmail(userId: number | string) {
+        return this.httpClient.patch<ApiResponse<null>>(this.apiUrl + "/confrimEmail", { userId: userId });
+    }
 }

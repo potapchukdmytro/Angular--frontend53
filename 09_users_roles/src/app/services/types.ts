@@ -33,7 +33,7 @@ export interface User {
   firstName: string;
   lastName: string;
   image: string;
-  role: Role;
+  role: string;
 }
 
 export interface Login {

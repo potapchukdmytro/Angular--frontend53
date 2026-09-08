@@ -23,6 +23,27 @@ export class UsersTable implements OnInit {
     });
   }
 
+  imageErrorHandle(event: ErrorEvent) {
+    const img = event.target as HTMLImageElement;
+    img.src = '/images/defaultAvatar.png';
+  }
+
+  confirmEmail(event: Event, userId: number | string) {
+    const checkBox = event.target as HTMLInputElement;
+    const value = checkBox.checked;
+    if (value) {
+      this.usersService.confirmEmail(userId).subscribe((data) => {
+        const users = this.payload()!.items;
+        const index = users!.findIndex((u) => u.id == userId);
+        if(index >= 0) {
+          users![index].emailConfirmed = true;
+          const newValue = { ...this.payload()!, items: users  };
+          this.payload.set(newValue);
+        }
+      });
+    }
+  }
+
   loadUsers(page: string | number = 1) {
     this.usersService.getUsers(page).subscribe((data) => {
       this.payload.set(data.payload);
