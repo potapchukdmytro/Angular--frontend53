@@ -14,6 +14,7 @@ import { Login } from './pages/auth/login/login';
 import { Profile } from './pages/user/profile/profile';
 import { authGuard } from './core/guards/auth-guard';
 import { adminRoleGuard } from './core/guards/admin-role-guard';
+import { UsersTable } from './pages/dashboard/users/users-table/users-table';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -32,7 +33,8 @@ export const routes: Routes = [
         children: [
             { path: "books", component: BooksTable },
             { path: "books/create", component: BookCreate },
-            { path: "books/update/:id", component: BookUpdate }
+            { path: "books/update/:id", component: BookUpdate },
+            { path: "users", component: UsersTable },
         ]
     }
 ];

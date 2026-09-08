@@ -20,6 +20,22 @@ export interface Book {
   authorId: number;
 }
 
+export interface Role {
+  id: number;
+  name: string;
+}
+
+export interface User {
+  id: number;
+  email: string;
+  userName: string;
+  emailConfirmed: boolean;
+  firstName: string;
+  lastName: string;
+  image: string;
+  role: Role;
+}
+
 export interface Login {
   email: string;
   password: string;
@@ -29,6 +45,7 @@ export interface JwtPayload {
   id: string;
   email: string;
   username: string;
+  emailConfirmed: boolean;
   firstName: string;
   lastName: string;
   image: string;
