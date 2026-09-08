@@ -2,16 +2,18 @@ import { Service, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiResponse, JwtPayload, Login } from '../types';
 import { jwtDecode } from 'jwt-decode';
+import { CookieService } from '../cookie/cookie-service';
 
 @Service()
 export class AuthService {
     private httpClient = inject(HttpClient);
+    private cookieService = inject(CookieService);
     private baseUrl = 'https://frontend53.somee.com/api/auth/';
 
     isAuth = signal(false);
 
     constructor() {
-        const token = localStorage.getItem('jwt');
+        const token = this.cookieService.get('ujt');
         token ? this.isAuth.set(true) : this.isAuth.set(false);
     }
 
@@ -21,16 +23,25 @@ export class AuthService {
 
     login(token: string) {
         this.isAuth.set(true);
-        localStorage.setItem("jwt", token);
+        try {
+            const decodedToken = jwtDecode(token);
+            const tokenExp = decodedToken.exp;
+            if(tokenExp) {
+                this.cookieService.setUnix('ujt', token, tokenExp);
+            }
+            
+        } catch (error) {
+            
+        }
     }
 
     logout() {
         this.isAuth.set(false);
-        localStorage.removeItem("jwt");
+        this.cookieService.remove('ujt');
     }
 
     getLocalUser() {
-        const token = localStorage.getItem('jwt');
+        const token = this.cookieService.get('ujt');
         if(!token) {
             return null;
         }
