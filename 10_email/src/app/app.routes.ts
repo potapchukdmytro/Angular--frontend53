@@ -15,6 +15,9 @@ import { Profile } from './pages/user/profile/profile';
 import { authGuard } from './core/guards/auth-guard';
 import { adminRoleGuard } from './core/guards/admin-role-guard';
 import { UsersTable } from './pages/dashboard/users/users-table/users-table';
+import { Register } from './pages/auth/register/register';
+import { ConfirmEmail } from './pages/auth/confirm-email/confirm-email';
+import { ConfirmEmailFailed } from './pages/auth/confirm-email-failed/confirm-email-failed';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -25,6 +28,9 @@ export const routes: Routes = [
     { path: 'stopwatch', component: Timer },
     { path: 'books', component: BookList },
     { path: 'login', component: Login },
+    { path: 'register', component: Register },
+    { path: 'email/confirm', component: ConfirmEmail },
+    { path: 'email/falied', component: ConfirmEmailFailed },
     { path: 'profile', component: Profile, canActivate: [authGuard] },
     { 
         path: 'dashboard',

@@ -1,6 +1,6 @@
 import { Service, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiResponse, JwtPayload, Login } from '../types';
+import { ApiResponse, JwtPayload, Login, Register } from '../types';
 import { jwtDecode } from 'jwt-decode';
 import { CookieService } from '../cookie/cookie-service';
 
@@ -19,6 +19,14 @@ export class AuthService {
 
     loginRequest(data: Login) {
         return this.httpClient.post<ApiResponse<string>>(this.baseUrl + 'login', data);
+    }
+
+    registerRequest(data: Register) {
+        return this.httpClient.post<ApiResponse<string>>(this.baseUrl + 'register?callbackUrl=http://localhost:4200/email/confirm', data);
+    }
+
+    confirmEmailRequest(userId: string, token: string) {
+        return this.httpClient.get<ApiResponse<null>>(this.baseUrl + `confirmEmail?token=${token}&userId=${userId}`);
     }
 
     login(token: string) {

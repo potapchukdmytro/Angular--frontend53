@@ -41,6 +41,12 @@ export interface Login {
   password: string;
 }
 
+export interface Register {
+  email: string;
+  password: string;
+  userName: string;
+}
+
 export interface JwtPayload {
   id: string;
   email: string;
