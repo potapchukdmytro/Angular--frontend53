@@ -1,12 +1,12 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { AuthService } from '../../../services/auth/auth-service';
 import { CookieService } from '../../../services/cookie/cookie-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 import { User } from '../../../services/types';
 
 @Component({
   selector: 'app-profile',
-  imports: [],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
@@ -25,7 +25,6 @@ export class Profile implements OnInit {
       return;
     }
     
-
     this.authService.getUser(token).subscribe({
       next: (data) => { this.user.set(data.payload); },
       error: (error) => {
@@ -33,5 +32,10 @@ export class Profile implements OnInit {
         this.router.navigate(['/login']);
       },
     });
+  }
+
+  logoutHandler() {
+    this.authService.logout();
+    this.router.navigate(["/"]);
   }
 }

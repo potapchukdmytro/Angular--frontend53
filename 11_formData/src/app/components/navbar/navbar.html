@@ -31,7 +31,7 @@
           <a routerLink="/profile">Профіль</a>
         </div>
         <div class="mx-2">
-          <a class="hover:cursor-pointer" (click)="authService.logout()">Вийти</a>
+          <a class="hover:cursor-pointer" (click)="logoutHandler()">Вийти</a>
         </div>
       } @else {
         <div class="mx-2">
