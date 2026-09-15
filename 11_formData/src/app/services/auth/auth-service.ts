@@ -34,6 +34,12 @@ export class AuthService {
     );
   }
 
+  sendConfirmEmail(userId: string | number, callbackUrl: string) {
+    return this.httpClient.get<ApiResponse<null>>(
+      this.baseUrl + `sendEmailConfirmMessage?userId=${userId}&callbackUrl=${callbackUrl}`,
+    );
+  }
+
   getUser(token: string) {
     const json = JSON.stringify(token);
     return this.httpClient.post<ApiResponse<User>>(this.baseUrl + 'me', json, {

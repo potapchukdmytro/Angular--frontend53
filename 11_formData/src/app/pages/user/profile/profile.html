@@ -17,13 +17,14 @@
             <div class="flex flex-col items-center">
               <div class="relative">
                 <img
-                  [src]="user()!.image ? user()!.image : '/images/profileAvatarDefault.png'"
+                  [src]="user()!.image ? usersService.imagesUrl + user()!.image : '/images/profileAvatarDefault.png'"
                   [alt]="user()!.userName"
                   class="h-40 w-40 rounded-full object-cover shadow-md"
                 />
 
-                <button
-                  class="absolute bottom-2 right-2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md transition hover:bg-slate-100"
+                <label
+                  for="avatar"
+                  class="hover:cursor-pointer absolute bottom-2 right-2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md transition hover:bg-slate-100"
                 >
                   <svg
                     class="h-5 w-5 text-slate-700"
@@ -39,7 +40,8 @@
                     />
                     <circle cx="12" cy="13" r="3" />
                   </svg>
-                </button>
+                </label>
+                <input (change)="imageSelect($event)" id="avatar" type="file" accept="image/*" hidden/>
               </div>
 
               <h1 class="mt-5 text-2xl font-bold">{{ user()!.userName }}</h1>
