@@ -24,37 +24,47 @@ import { Reviewed } from './pages/user/reviewed/reviewed';
 import { Settings } from './pages/user/settings/settings';
 
 export const routes: Routes = [
-  { path: '', component: Home },
-  { path: 'movie', component: Movie },
-  { path: 'band', component: MusicBand },
+  // Main pages
+  { path: '', component: Home, title: "Домашня сторінка" },
+  { path: 'movie', component: Movie, title: "Фільм - одісея" },
+  { path: 'band', component: MusicBand, title: "Гурт Скрябін" },
   { path: 'pipes', component: Pipes },
   { path: 'counter', component: Counter },
   { path: 'stopwatch', component: Timer },
-  { path: 'books', component: BookList },
-  { path: 'login', component: Login },
-  { path: 'register', component: Register },
-  { path: 'email/confirm', component: ConfirmEmail },
-  { path: 'email/falied', component: ConfirmEmailFailed },
+  { path: 'books', component: BookList, title: "Каталог книг" },
+
+  // Authorization
+  { path: 'login', component: Login, title: "Вхід" },
+  { path: 'register', component: Register, title: "Реєстрація" },
+
+  // Email
+  { path: 'email/confirm', component: ConfirmEmail, title: "Підтвердження пошти" },
+  { path: 'email/falied', component: ConfirmEmailFailed, title: "Підтвердження пошти" },
+
+  // Profile
   {
     path: 'profile',
     component: Profile,
     canActivate: [authGuard],
     children: [
-      { path: '', component: Personal },
-      { path: 'favorites', component: Favorites },
-      { path: 'reviewed', component: Reviewed },
-      { path: 'settings', component: Settings },
+      { path: '', component: Personal, title: "Профіль" },
+      { path: 'favorites', component: Favorites, title: "Профіль - Улюблене" },
+      { path: 'reviewed', component: Reviewed, title: "Профіль - Переглянуті" },
+      { path: 'settings', component: Settings, title: "Профіль - Налаштування" },
     ],
   },
+
+  // Dashboard
   {
     path: 'dashboard',
     component: Dashboard,
     canActivate: [adminRoleGuard],
+    title: "Панель керування",
     children: [
-      { path: 'books', component: BooksTable },
-      { path: 'books/create', component: BookCreate },
+      { path: 'books', component: BooksTable, title: "Список книг" },
+      { path: 'books/create', component: BookCreate, title: "Нова книга" },
       { path: 'books/update/:id', component: BookUpdate },
-      { path: 'users', component: UsersTable },
+      { path: 'users', component: UsersTable, title: "Список користувачів" },
     ],
   },
 ];

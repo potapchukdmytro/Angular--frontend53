@@ -2,7 +2,7 @@
   class="min-h-screen bg-top bg-repeat-y"
   style="background-image: url('https://picsum.photos/1920/1080')"
 >
-  @if (user()) {
+  @if (usersService.user()) {
     <!-- Overlay -->
     <div class="min-h-screen bg-slate-900/10">
       <!-- Main -->
@@ -17,8 +17,8 @@
             <div class="flex flex-col items-center">
               <div class="relative">
                 <img
-                  [src]="user()!.image ? usersService.imagesUrl + user()!.image : '/images/profileAvatarDefault.png'"
-                  [alt]="user()!.userName"
+                  [src]="usersService.user()!.image ? usersService.imagesUrl + usersService.user()!.image : '/images/profileAvatarDefault.png'"
+                  [alt]="usersService.user()!.userName"
                   class="h-40 w-40 rounded-full object-cover shadow-md"
                 />
 
@@ -44,9 +44,9 @@
                 <input (change)="imageSelect($event)" id="avatar" type="file" accept="image/*" hidden/>
               </div>
 
-              <h1 class="mt-5 text-2xl font-bold">{{ user()!.userName }}</h1>
+              <h1 class="mt-5 text-2xl font-bold">{{ usersService.user()!.userName }}</h1>
 
-              <p class="mt-1 text-sm text-slate-500">{{ user()!.email }}</p>
+              <p class="mt-1 text-sm text-slate-500">{{ usersService.user()!.email }}</p>
             </div>
 
             <!-- Sidebar navigation -->
@@ -156,7 +156,7 @@
           <!-- Profile content -->
           <section class="p-8 md:p-10">
             <!-- Title -->
-            <router-outlet [routerOutletData]="user()"></router-outlet>
+            <router-outlet [routerOutletData]="usersService.user()"></router-outlet>
           </section>
         </div>
       </main>

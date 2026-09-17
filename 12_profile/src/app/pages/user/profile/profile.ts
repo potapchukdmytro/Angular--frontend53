@@ -17,7 +17,6 @@ export class Profile implements OnInit {
   private router = inject(Router);
   
   usersService = inject(UsersService);
-  user = signal<User | null>(null);
 
   ngOnInit(): void {
     const token = this.cookieService.get('ujt');
@@ -27,13 +26,7 @@ export class Profile implements OnInit {
       return;
     }
     
-    this.authService.getUser(token).subscribe({
-      next: (data) => { this.user.set(data.payload); },
-      error: (error) => {
-        this.authService.logout();
-        this.router.navigate(['/login']);
-      },
-    });
+    this.usersService.loadUser(token);
   }
 
   imageSelect(event: Event) {
@@ -41,7 +34,7 @@ export class Profile implements OnInit {
 
     if(input.files && input.files.length > 0) {
       const file = input.files[0];
-      const userId = this.user()!.id;
+      const userId = this.usersService.user()!.id;
 
       const formData = new FormData();
       formData.append("userId", userId.toString());
@@ -49,7 +42,7 @@ export class Profile implements OnInit {
 
       this.usersService.setAvatar(formData).subscribe({
         next: (data) => {
-          this.user.update((prev) => {
+          this.usersService.user.update((prev) => {
             return prev ? {...prev, image: data.payload } : prev;
           })
         }

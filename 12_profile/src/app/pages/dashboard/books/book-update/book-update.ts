@@ -4,6 +4,7 @@ import { BooksService } from '../../../../services/books/books-service';
 import { AuthorsService } from '../../../../services/authors/authors-service';
 import { Author } from '../../../../services/types';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-book-update',
@@ -14,6 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class BookUpdate implements OnInit {
   private booksService = inject(BooksService);
   private authorsService = inject(AuthorsService);
+  private titleService = inject(Title);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private bookId: string | null = null;
@@ -35,6 +37,7 @@ export class BookUpdate implements OnInit {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Редагування книги');
     this.bookId = this.route.snapshot.paramMap.get('id');
     if (this.bookId) {
       this.loadBook(this.bookId);
@@ -50,6 +53,7 @@ export class BookUpdate implements OnInit {
   loadBook(id: string) {
     this.booksService.getBook(id).subscribe({
       next: ({ payload }) => {
+        this.titleService.setTitle(`${this.titleService.getTitle()} - ${payload.title}`);
         this.updateForm.patchValue({
           title: payload.title,
           description: payload.description,

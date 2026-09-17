@@ -34,6 +34,9 @@ export interface User {
   lastName: string;
   image: string;
   role: string;
+  country: string;
+  birthDate: string;
+  aboutMe: string;
 }
 
 export interface Login {
