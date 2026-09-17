@@ -1,0 +1,114 @@
+<div class="flex flex-wrap items-center justify-between gap-4">
+  <div>
+    <h1 class="text-3xl font-bold">Улюблене</h1>
+
+    <p class="mt-2 text-slate-500">Ваші улюблені фільми, книги та гурти.</p>
+  </div>
+
+  <!-- Filters -->
+  <div class="flex rounded-lg bg-slate-100 p-1">
+    <button class="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white">Все</button>
+
+    <button class="rounded-md px-4 py-2 text-sm text-slate-600 hover:bg-white">Фільми</button>
+
+    <button class="rounded-md px-4 py-2 text-sm text-slate-600 hover:bg-white">Книги</button>
+
+    <button class="rounded-md px-4 py-2 text-sm text-slate-600 hover:bg-white">Гурти</button>
+  </div>
+</div>
+
+<!-- Grid -->
+<div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  <!-- Item -->
+  <div
+    class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+  >
+    <div class="relative aspect-[2/3] overflow-hidden">
+      <img
+        src="/images/interstellar.jpg"
+        class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+        alt=""
+      />
+
+      <button
+        class="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-red-500 shadow"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 21S3 15.5 3 8.5A5.5 5.5 0 0 1 12 4a5.5 5.5 0 0 1 9 4.5C21 15.5 12 21 12 21z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="p-4">
+      <span class="text-xs font-medium text-blue-600"> Фільм </span>
+
+      <h3 class="mt-1 font-bold">Interstellar</h3>
+
+      <p class="mt-1 text-sm text-slate-500">2014</p>
+    </div>
+  </div>
+
+  <!-- Item -->
+  <div
+    class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+  >
+    <div class="relative aspect-[2/3] overflow-hidden">
+      <img
+        src="/images/dune.jpg"
+        class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+        alt=""
+      />
+
+      <button
+        class="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-red-500 shadow"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 21S3 15.5 3 8.5A5.5 5.5 0 0 1 12 4a5.5 5.5 0 0 1 9 4.5C21 15.5 12 21 12 21z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="p-4">
+      <span class="text-xs font-medium text-blue-600"> Фільм </span>
+
+      <h3 class="mt-1 font-bold">Dune</h3>
+
+      <p class="mt-1 text-sm text-slate-500">2021</p>
+    </div>
+  </div>
+
+  <!-- Item -->
+  <div
+    class="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+  >
+    <div class="relative aspect-[2/3] overflow-hidden">
+      <img
+        src="/images/book.jpg"
+        class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+        alt=""
+      />
+
+      <button
+        class="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full bg-white text-red-500 shadow"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12 21S3 15.5 3 8.5A5.5 5.5 0 0 1 12 4a5.5 5.5 0 0 1 9 4.5C21 15.5 12 21 12 21z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="p-4">
+      <span class="text-xs font-medium text-green-600"> Книга </span>
+
+      <h3 class="mt-1 font-bold">Відьмак</h3>
+
+      <p class="mt-1 text-sm text-slate-500">Анджей Сапковський</p>
+    </div>
+  </div>
+</div>

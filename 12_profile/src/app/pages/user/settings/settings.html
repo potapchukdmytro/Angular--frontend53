@@ -1,0 +1,124 @@
+<div>
+  <h1 class="text-3xl font-bold">Налаштування</h1>
+
+  <p class="mt-2 text-slate-500">Керуйте параметрами свого облікового запису.</p>
+</div>
+
+<!-- Account -->
+<div class="mt-8 rounded-xl border border-slate-200">
+  <div class="border-b border-slate-200 p-6">
+    <h2 class="text-lg font-bold">Особисті дані</h2>
+
+    <p class="mt-1 text-sm text-slate-500">Змініть основну інформацію профілю.</p>
+  </div>
+
+  <form class="space-y-6 p-6">
+    <div class="grid gap-6 md:grid-cols-2">
+      <div>
+        <label class="mb-2 block text-sm font-medium"> Ім'я </label>
+
+        <input
+          type="text"
+          [value]="user().userName"
+          class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+        />
+      </div>
+
+      <div>
+        <label class="mb-2 block text-sm font-medium"> Email </label>
+
+        <input
+          type="email"
+          [value]="user().email"
+          class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label class="mb-2 block text-sm font-medium"> Про себе </label>
+
+      <textarea
+        rows="4"
+        class="w-full resize-none rounded-lg border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+      >
+Люблю фільми, музику та хороші книги.</textarea>
+    </div>
+
+    <div class="flex justify-end">
+      <button
+        class="rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+      >
+        Зберегти зміни
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Password -->
+<div class="mt-6 rounded-xl border border-slate-200">
+  <div class="border-b border-slate-200 p-6">
+    <h2 class="text-lg font-bold">Зміна пароля</h2>
+
+    <p class="mt-1 text-sm text-slate-500">Рекомендується використовувати складний пароль.</p>
+  </div>
+
+  <form class="space-y-5 p-6">
+    <div>
+      <label class="mb-2 block text-sm font-medium"> Поточний пароль </label>
+
+      <input
+        type="password"
+        placeholder="Введіть поточний пароль"
+        class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+      />
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2">
+      <div>
+        <label class="mb-2 block text-sm font-medium"> Новий пароль </label>
+
+        <input
+          type="password"
+          placeholder="Новий пароль"
+          class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+        />
+      </div>
+
+      <div>
+        <label class="mb-2 block text-sm font-medium"> Повторіть пароль </label>
+
+        <input
+          type="password"
+          placeholder="Повторіть новий пароль"
+          class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+        />
+      </div>
+    </div>
+
+    <div class="flex justify-end">
+      <button
+        class="rounded-lg bg-slate-800 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-900"
+      >
+        Змінити пароль
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Danger -->
+<div class="mt-6 rounded-xl border border-red-200">
+  <div class="p-6">
+    <h2 class="text-lg font-bold text-red-600">Видалення акаунта</h2>
+
+    <p class="mt-2 text-sm text-slate-500">
+      Після видалення акаунта відновити його буде неможливо.
+    </p>
+
+    <button
+      class="mt-5 rounded-lg border border-red-500 px-5 py-2.5 text-sm font-medium text-red-500 transition hover:bg-red-500 hover:text-white"
+    >
+      Видалити акаунт
+    </button>
+  </div>
+</div>
