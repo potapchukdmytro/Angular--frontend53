@@ -62,15 +62,28 @@
     <p class="mt-1 text-sm text-slate-500">Рекомендується використовувати складний пароль.</p>
   </div>
 
-  <form class="space-y-5 p-6">
+  <form class="space-y-5 p-6" (ngSubmit)="sumbitHandler()" [formGroup]="changePasswordForm">
     <div>
       <label class="mb-2 block text-sm font-medium"> Поточний пароль </label>
 
       <input
         type="password"
         placeholder="Введіть поточний пароль"
+        autocomplete="current-password"
+        formControlName="oldPassword"
         class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
       />
+      @if (
+        changePasswordForm.get('oldPassword')?.touched &&
+        changePasswordForm.get('oldPassword')?.invalid
+      ) {
+        @if (changePasswordForm.get('oldPassword')?.errors?.['required']) {
+          <small class="text-red-700 text-xs">Вкажіть пароль</small>
+        }
+        @if (changePasswordForm.get('oldPassword')?.errors?.['minlength']) {
+          <small class="text-red-700 text-xs">Мінімальна довжина 6 символів</small>
+        }
+      }
     </div>
 
     <div class="grid gap-5 md:grid-cols-2">
@@ -78,20 +91,46 @@
         <label class="mb-2 block text-sm font-medium"> Новий пароль </label>
 
         <input
+          autocomplete="new-password"
           type="password"
           placeholder="Новий пароль"
+          formControlName="newPassword"
           class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
         />
+        @if (
+          changePasswordForm.get('newPassword')?.touched &&
+          changePasswordForm.get('newPassword')?.invalid
+        ) {
+          @if (changePasswordForm.get('newPassword')?.errors?.['required']) {
+            <small class="text-red-700 text-xs">Вкажіть новий пароль</small>
+          }
+          @if (changePasswordForm.get('newPassword')?.errors?.['minlength']) {
+            <small class="text-red-700 text-xs">Мінімальна довжина 6 символів</small>
+          }
+        }
       </div>
 
       <div>
         <label class="mb-2 block text-sm font-medium"> Повторіть пароль </label>
 
         <input
+          autocomplete="new-password"
           type="password"
           placeholder="Повторіть новий пароль"
+          formControlName="confirmNewPassword"
           class="w-full rounded-lg border border-slate-300 px-4 py-3 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
         />
+        @if (
+          changePasswordForm.get('confirmNewPassword')?.touched &&
+          changePasswordForm.get('confirmNewPassword')?.invalid
+        ) {
+          @if (changePasswordForm.get('confirmNewPassword')?.errors?.['required']) {
+            <small class="text-red-700 text-xs">Підтвердіть новий пароль</small>
+          }
+          @if (changePasswordForm.get('confirmNewPassword')?.errors?.['minlength']) {
+            <small class="text-red-700 text-xs">Мінімальна довжина 6 символів</small>
+          }
+        }
       </div>
     </div>
 

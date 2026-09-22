@@ -3,11 +3,13 @@ import { inject, Service, signal } from '@angular/core';
 import { ApiResponse, ListPayload, User, UserPersonalData } from '../types';
 import { AuthService } from '../auth/auth-service';
 import { Router } from '@angular/router';
+import { CookieService } from '../cookie/cookie-service';
 
 @Service()
 export class UsersService {
   private httpClient = inject(HttpClient);
   private authService = inject(AuthService);
+  private cookieService = inject(CookieService);
   private router = inject(Router);
   private apiUrl = 'https://frontend53.somee.com/api/user';
 
@@ -41,14 +43,28 @@ export class UsersService {
     });
   }
 
+  logout() {
+    this.authService.logout();
+    this.user.set(null);
+  }
+
   updateProfile(data: UserPersonalData) {
     return this.httpClient.patch<ApiResponse<User>>(this.apiUrl + '/profile', data);
   }
 
   changePassword(oldPassword: string, newPassword: string) {
-    return this.httpClient.patch<ApiResponse<User>>(this.apiUrl + '/changePassword', {
-      oldPassword: oldPassword,
-      newPassword: newPassword
-    });
+    const token = this.cookieService.get('ujt');
+    return this.httpClient.patch<ApiResponse<User>>(
+      this.apiUrl + '/changePassword',
+      {
+        oldPassword: oldPassword,
+        newPassword: newPassword,
+      },
+      {
+        headers: {
+          "Authorization": "Bearer " + token
+        }
+      },
+    );
   }
 }

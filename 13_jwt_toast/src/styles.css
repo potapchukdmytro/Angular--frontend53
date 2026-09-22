@@ -1,3 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+@import '@openng/ngx-toastr/toastr';
+
+.custom-toast {
+  position: relative;
+
+  border-radius: 14px !important;
+  padding: 14px 16px 14px 52px !important;
+
+  background: #ffffff !important;
+  color: #0f172a !important;
+
+  box-shadow:
+    0 10px 25px rgba(15, 23, 42, 0.12),
+    0 4px 10px rgba(15, 23, 42, 0.06) !important;
+
+  border: 1px solid #e2e8f0 !important;
+
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+
+  min-width: 320px !important;
+}
+
+.custom-toast::before {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 16px;
+
+  width: 24px;
+  height: 24px;
+
+  transform: translateY(-50%);
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.custom-toast .toast-title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+
+  color: #0f172a !important;
+
+  margin-bottom: 3px !important;
+}
+
+.custom-toast .toast-message {
+  color: #64748b !important;
+}
+
+.custom-toast .toast-close-button {
+  color: #64748b !important;
+  opacity: 1 !important;
+
+  font-size: 22px !important;
+  font-weight: 400 !important;
+
+  text-shadow: none !important;
+}
+
+.custom-toast.toast-success {
+  border-left: 4px solid #22c55e !important;
+}
+
+.custom-toast.toast-success::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2322c55e' stroke-width='2.5'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='m8 12 2.5 2.5L16 9'/%3E%3C/svg%3E");
+}
+
+.custom-toast.toast-error {
+  border-left: 4px solid #ef4444 !important;
+}
+
+.custom-toast.toast-error::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ef4444' stroke-width='2.5'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8 8l8 8M16 8l-8 8'/%3E%3C/svg%3E");
+}
+
+.custom-toast.toast-warning {
+  border-left: 4px solid #f59e0b !important;
+}
+
+.custom-toast.toast-warning::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23f59e0b' stroke-width='2.5'%3E%3Cpath d='M12 3 2.5 20h19L12 3z'/%3E%3Cpath d='M12 9v4'/%3E%3Ccircle cx='12' cy='17' r='1' fill='%23f59e0b' stroke='none'/%3E%3C/svg%3E");
+}
+
+.custom-toast.toast-info {
+  border-left: 4px solid #3b82f6 !important;
+}
+
+.custom-toast.toast-info::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%233b82f6' stroke-width='2.5'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 11v5'/%3E%3Ccircle cx='12' cy='8' r='1' fill='%233b82f6' stroke='none'/%3E%3C/svg%3E");
+}

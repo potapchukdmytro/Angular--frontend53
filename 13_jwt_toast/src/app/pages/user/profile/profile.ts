@@ -4,6 +4,7 @@ import { CookieService } from '../../../services/cookie/cookie-service';
 import { Router, RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 import { User } from '../../../services/types';
 import { UsersService } from '../../../services/users/users-service';
+import { ToastrService } from '@openng/ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,7 @@ import { UsersService } from '../../../services/users/users-service';
 export class Profile implements OnInit {
   private authService = inject(AuthService);
   private cookieService = inject(CookieService);
+  private toastr = inject(ToastrService);
   private router = inject(Router);
   
   usersService = inject(UsersService);
@@ -42,6 +44,7 @@ export class Profile implements OnInit {
 
       this.usersService.setAvatar(formData).subscribe({
         next: (data) => {
+          this.toastr.success(data.message, "Зображення профілю");
           this.usersService.user.update((prev) => {
             return prev ? {...prev, image: data.payload } : prev;
           })
