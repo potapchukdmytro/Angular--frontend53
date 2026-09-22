@@ -74,3 +74,11 @@ export interface ApiResponse<T> {
   success: boolean;
   payload: T;
 }
+
+export interface UserPersonalData {
+  userId: number | string,
+  userName: string,
+  country: string,
+  birthDate: string,
+  aboutMe: string
+}

@@ -1,6 +1,5 @@
-import { Component, inject, Signal, WritableSignal } from '@angular/core';
-import { User } from '../../../services/types';
-import { ROUTER_OUTLET_DATA } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { UsersService } from '../../../services/users/users-service';
 
 @Component({
   selector: 'app-settings',
@@ -9,5 +8,5 @@ import { ROUTER_OUTLET_DATA } from '@angular/router';
   styleUrl: './settings.css',
 })
 export class Settings {
-  user = inject(ROUTER_OUTLET_DATA) as Signal<User>;
+  usersService = inject(UsersService);
 }

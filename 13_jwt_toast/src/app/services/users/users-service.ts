@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Service, signal } from '@angular/core';
-import { ApiResponse, ListPayload, User } from '../types';
+import { ApiResponse, ListPayload, User, UserPersonalData } from '../types';
 import { AuthService } from '../auth/auth-service';
 import { Router } from '@angular/router';
 
@@ -29,13 +29,6 @@ export class UsersService {
     return this.httpClient.patch<ApiResponse<string>>(this.apiUrl + '/avatar', data);
   }
 
-  setCountry(userId: string | number, country: string) {
-    return this.httpClient.patch<ApiResponse<string>>(this.apiUrl + '/country', {
-      userId: userId,
-      country: country,
-    });
-  }
-
   loadUser(token: string) {
     this.authService.getUser(token).subscribe({
       next: (data) => {
@@ -48,17 +41,14 @@ export class UsersService {
     });
   }
 
-  setBirthDate(userId: string | number, birthDate: string) {
-    return this.httpClient.patch<ApiResponse<string>>(this.apiUrl + '/birthDate', {
-      userId: userId,
-      birthDate: birthDate,
-    });
+  updateProfile(data: UserPersonalData) {
+    return this.httpClient.patch<ApiResponse<User>>(this.apiUrl + '/profile', data);
   }
 
-  setUserName(userId: string | number, userName: string) {
-    return this.httpClient.patch<ApiResponse<string>>(this.apiUrl + '/changeUserName', {
-      userId: userId,
-      userName: userName,
+  changePassword(oldPassword: string, newPassword: string) {
+    return this.httpClient.patch<ApiResponse<User>>(this.apiUrl + '/changePassword', {
+      oldPassword: oldPassword,
+      newPassword: newPassword
     });
   }
 }

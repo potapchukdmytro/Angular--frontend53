@@ -1,4 +1,4 @@
-import { Component, inject, Signal, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { AuthService } from '../../../services/auth/auth-service';
 import { BirthDatePipe } from '../../../pipes/birth-date-pipe';
 import { FormsModule } from '@angular/forms';
@@ -21,56 +21,30 @@ export class Personal {
   country = this.userService.user()!.country;
   userName = this.userService.user()!.userName;
   birthDate: string = this.dateService.ISOToISODate(this.userService.user()!.birthDate);
+  aboutMe = this.userService.user()!.aboutMe;
 
   switchEditable() {
     this.isEditable.update((prev) => !prev);
   }
 
   saveChanges() {
-    // country
-    if (this.userService.user()!.country != this.country) {
-      this.userService.setCountry(this.userService.user()!.id, this.country).subscribe({
-        next: (data) => {
-          this.isEditable.set(false);
-          this.userService.user.update((prev) =>
-            prev ? { ...prev, country: data.payload } : prev,
-          );
-        },
-        error: () => {
-          this.isEditable.set(false);
-        },
-      });
+    const editableData = {
+      userId: this.userService.user()!.id,
+      country: this.country,
+      userName: this.userName,
+      birthDate: this.birthDate,
+      aboutMe: this.aboutMe
     }
 
-    // userName
-    if (this.userService.user()!.userName != this.userName) {
-      this.userService.setUserName(this.userService.user()!.id, this.userName).subscribe({
-        next: (data) => {
-          this.isEditable.set(false);
-          this.userService.user.update((prev) =>
-            prev ? { ...prev, userName: data.payload } : prev,
-          );
-        },
-        error: () => {
-          this.isEditable.set(false);
-        },
-      });
-    }
-
-    // birthDate
-    if (this.dateService.ISOToISODate(this.userService.user()!.birthDate) != this.birthDate) {
-      this.userService.setBirthDate(this.userService.user()!.id, this.birthDate).subscribe({
-        next: (data) => {
-          this.isEditable.set(false);
-          this.userService.user.update((prev) =>
-            prev ? { ...prev, birthDate: data.payload } : prev,
-          );
-        },
-        error: () => {
-          this.isEditable.set(false);
-        },
-      });
-    }
+    this.userService.updateProfile(editableData).subscribe({
+      next: (data) =>  {
+        this.isEditable.set(false);
+        this.userService.user.set(data.payload);
+      },
+      error: (error) => {
+        this.isEditable.set(false);
+      }
+    });
   }
 
   sendEmailConfirm() {
